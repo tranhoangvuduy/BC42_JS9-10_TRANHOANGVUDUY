@@ -135,6 +135,8 @@ function validate(){
         isValid = false;
         getElement("#tbTKNV").innerHTML = "tài khoản nhân viên không được để trống";
         getElement("#tbTKNV").style.display = "block";
+    } else{
+        getElement("#tbTKNV").innerHTML = "";
     }
     // kiểm tra tên
     let ten = getElement("#name").value;
@@ -142,28 +144,45 @@ function validate(){
         isValid = false;
         getElement("#tbTen").innerHTML = "họ tên nhân viên không được để trống";
         getElement("#tbTen").style.display = "block";
+    } else{
+        getElement("#tbTen").innerHTML = ""; 
     }
    
-    // // kiểm tra lương
-    // let luong = getElement("#luongCB").value;
-    // if(!email.trim()){
-    //     isValid = false;
-    //     getElement("#tbLuongCB").innerHTML = "lương nhân viên không được để trống";
-    //     getElement("#tbLuongCB").style.display = "block";
-    // }
     // kiểm tra email
     let email = getElement("#email").value;
     if(!email.trim()){
         isValid = false;
         getElement("#tbEmail").innerHTML = "email nhân viên không được để trống";
         getElement("#tbEmail").style.display = "block";
+    } else if(!/^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email)){
+        isValid = false;
+        getElement("#tbEmail").innerHTML = "email nhân viên không hợp lệ";
+        getElement("#tbEmail").style.display = "block";
+    } else{
+        getElement("#tbEmail").innerHTML = "";
     }
+    // kiểm tra password
+    let password = getElement("#password").value;
+    if(!password.trim()){
+        isValid = false;
+        getElement("#tbMatKhau").innerHTML = "mật khẩu nhân viên không được để trống";
+        getElement("#tbMatKhau").style.display = "block";
+    } else if(!/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,20})/.test(password)){
+        isValid = false;
+        getElement("#tbMatKhau").innerHTML = "mật khẩu nhân viên không  hợp lệ";
+        getElement("#tbMatKhau").style.display = "block"; 
+    } else {
+        getElement("#tbMatKhau").innerHTML = "";
+    }
+
     // kiểm tra ngày làm
     let ngaylam = getElement("#datepicker").value;
     if(!ngaylam.trim()){
         isValid = false;
         getElement("#tbNgay").innerHTML = "ngày làm nhân viên không được để trống";
         getElement("#tbNgay").style.display = "block";
+    } else{
+        getElement("#tbNgay").innerHTML = "";  
     }
      // kiểm tra lương
     let luong = getElement("#luongCB").value;
@@ -171,6 +190,8 @@ function validate(){
         isValid = false;
         getElement("#tbLuongCB").innerHTML = "lương nhân viên không được để trống";
         getElement("#tbLuongCB").style.display = "block";
+    } else{
+        getElement("#tbLuongCB").innerHTML = "";
     }
     // kiểm tra giờ làm
     let giolam = getElement("#gioLam").value;
@@ -178,6 +199,8 @@ function validate(){
         isValid = false;
         getElement("#tbGiolam").innerHTML = "giờ làm nhân viên không được để trống";
         getElement("#tbGiolam").style.display = "block";
+    } else{
+        getElement("#tbGiolam").innerHTML = "";
     }
 
     return isValid;
